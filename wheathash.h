@@ -1,6 +1,7 @@
 /*
     Wheathash takes (optimally) 32-bit inputs and produces a 64-bit hash as its result.
     It is a slightly-edited version of Waterhash, which is an edited version of wyhash.
+    It is meant to use very similar code to Waterhash, which produces a 32-bit hash.
     Original Author: Wang Yi <godspeed_china@yeah.net>
     Wheathash Variant Author: Tommy Ettinger <tommy.ettinger@gmail.com>
 */
@@ -22,8 +23,7 @@ static inline uint64_t _wheatr32(const uint8_t *p){ uint32_t v; memcpy(&v, p, 4)
 static inline uint64_t wheathash(const void* key, uint32_t len, uint64_t seed){
     const uint8_t *p = (const uint8_t*)key;
     uint32_t i;
-    for (i = 0; i + 16 <= len; i += 16, p += 16)
-    {
+    for (i = 0; i + 16 <= len; i += 16, p += 16) {
         seed = _wheatmum(
             _wheatmum(_wheatr32(p) ^ _wheatp1, _wheatr32(p + 4) ^ _wheatp2) + seed,
             _wheatmum(_wheatr32(p + 8) ^ _wheatp3, _wheatr32(p + 12) ^ _wheatp4));
