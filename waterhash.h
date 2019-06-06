@@ -1,4 +1,6 @@
 /*
+    Waterhash takes (optimally) 32-bit inputs and produces a 32-bit hash as its result.
+	It is an edited version of wyhash.
     Original Author: Wang Yi <godspeed_china@yeah.net>
     Waterhash Variant Author: Tommy Ettinger <tommy.ettinger@gmail.com>
 */
